@@ -1,46 +1,49 @@
 .card-img-top {
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
   margin: 0 auto;
-  padding: 5px;
+  padding: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-img-top:hover {
+  transform: rotate(10deg);
 }
 
 .card {
   border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
-  width: 200px;
-  margin: 10px auto;
-  padding: 15px;
-  background: linear-gradient(145deg, #f0f0f0, #cacaca);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
 }
 
 .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .card-title {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  text-align: center;
+  margin: 10px 0;
   color: #333;
 }
 
 .card-text {
-  text-align: center;
   font-size: 1rem;
-  color: #666;
+  margin: 10px 0;
+  color: #555;
 }
 
 .crypto-price,
 .crypto-market-cap,
 .crypto-change {
-  font-size: 0.9rem;
-  font-weight: bold;
-  display: block;
-  margin-top: 10px;
+  font-size: 1rem;
+  margin-top: 5px;
 }
 
 .crypto-price {
@@ -65,14 +68,14 @@
 
 .search-container {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
 .search-input {
   width: 100%;
   max-width: 500px;
-  padding: 12px;
+  padding: 12px 15px;
   border: 2px solid #ced4da;
   border-radius: 25px;
   font-size: 1.1rem;
@@ -81,7 +84,7 @@
 
 .search-input:focus {
   border-color: #007bff;
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.25);
 }
 
 .search-icon {

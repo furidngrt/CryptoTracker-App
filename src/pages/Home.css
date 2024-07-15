@@ -136,6 +136,17 @@
   color: #ced4da;
 }
 
+.dark-mode .pagination,
+.dark-mode .pagination-item {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-mode .pagination-item.active {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
 .top-bar {
   display: flex;
   justify-content: space-between;

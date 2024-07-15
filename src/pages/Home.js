@@ -23,7 +23,7 @@ const Home = () => {
     })
     .then(response => {
       setCryptos(response.data);
-      setTotalPages(Math.ceil(1000 / 15)); // Assume there are 100 items, adjust as needed
+      setTotalPages(Math.ceil(200 / 15)); // Assume there are 100 items, adjust as needed
       setLoading(false);
     })
     .catch(error => {

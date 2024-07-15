@@ -42,3 +42,18 @@
   display: block;
   margin-top: 10px;
 }
+
+.crypto-change {
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: block;
+  margin-top: 10px;
+}
+
+.crypto-change.up {
+  color: #28a745; /* Green for positive change */
+}
+
+.crypto-change.down {
+  color: #dc3545; /* Red for negative change */
+}

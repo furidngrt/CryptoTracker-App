@@ -23,14 +23,6 @@
   text-align: center;
 }
 
-.card-gainer {
-  border-left: 5px solid #28a745; /* Green border for top gainers */
-}
-
-.card-loser {
-  border-left: 5px solid #dc3545; /* Red border for top losers */
-}
-
 .card:hover {
   transform: translateY(-10px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
@@ -107,23 +99,42 @@
   font-size: 1.2rem;
 }
 
+.pagination {
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Dark Mode Styles */
 .dark-mode {
-  background-color: #121212;
-  color: #ffffff;
+  background-color: #1e1e1e;
+  color: #e0e0e0;
 }
 
 .dark-mode .card {
-  background: linear-gradient(145deg, #333333, #2a2a2a);
+  background: linear-gradient(145deg, #2b2b2b, #232323);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.dark-mode .card-title,
+.dark-mode .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode .card-title {
+  color: #e0e0e0;
+}
+
 .dark-mode .card-text {
-  color: #ffffff;
+  color: #cccccc;
+}
+
+.dark-mode .search-container {
+  background-color: #1e1e1e;
 }
 
 .dark-mode .search-input {
   background-color: #333;
-  color: #fff;
+  color: #e0e0e0;
   border-color: #444;
 }
 
@@ -136,15 +147,39 @@
   color: #ced4da;
 }
 
-.dark-mode .pagination,
-.dark-mode .pagination-item {
-  background-color: #333;
-  color: #fff;
+.dark-mode .crypto-price {
+  color: #4caf50;
 }
 
-.dark-mode .pagination-item.active {
+.dark-mode .crypto-market-cap {
+  color: #2196f3;
+}
+
+.dark-mode .crypto-change.up {
+  color: #4caf50;
+}
+
+.dark-mode .crypto-change.down {
+  color: #f44336;
+}
+
+.dark-mode .pagination {
+  background-color: #1e1e1e;
+}
+
+.dark-mode .pagination .page-item .page-link {
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #444;
+}
+
+.dark-mode .pagination .page-item.active .page-link {
   background-color: #007bff;
   border-color: #007bff;
+}
+
+.dark-mode .pagination .page-item .page-link:hover {
+  background-color: #555;
 }
 
 .top-bar {

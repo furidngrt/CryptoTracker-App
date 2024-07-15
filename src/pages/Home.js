@@ -46,14 +46,15 @@ const Home = () => {
 
   return (
     <Container className="mt-4">
-      <Form.Group className="mb-3">
+      <div className="search-container">
         <Form.Control
           type="text"
           placeholder="Search Crypto..."
           value={searchTerm}
           onChange={handleSearchChange}
+          className="search-input"
         />
-      </Form.Group>
+      </div>
       {loading ? (
         <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>

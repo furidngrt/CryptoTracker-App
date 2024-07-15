@@ -57,3 +57,15 @@
 .crypto-change.down {
   color: #dc3545; /* Red for negative change */
 }
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1rem;
+}

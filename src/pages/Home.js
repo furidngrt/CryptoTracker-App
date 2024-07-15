@@ -10,10 +10,22 @@ const Home = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
   const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')) || []);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem('darkMode')) || false);
   const [sortOption, setSortOption] = useState('market_cap_desc');
   const [topGainers, setTopGainers] = useState([]);
   const [topLosers, setTopLosers] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+    fetchTopGainersAndLosers();
+    const interval = setInterval(fetchData, 60000); // Update every 60 seconds
+    return () => clearInterval(interval);
+  }, [page, sortOption]);
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', JSON.stringify(darkMode));
+    document.body.classList.toggle('dark-mode', darkMode);
+  }, [darkMode]);
 
   const fetchData = () => {
     setLoading(true);
@@ -69,13 +81,6 @@ const Home = () => {
     });
   };
 
-  useEffect(() => {
-    fetchData();
-    fetchTopGainersAndLosers();
-    const interval = setInterval(fetchData, 60000); // Update every 60 seconds
-    return () => clearInterval(interval);
-  }, [page, sortOption]);
-
   const handlePageChange = (pageNumber) => {
     setPage(pageNumber);
   };
@@ -104,7 +109,7 @@ const Home = () => {
   const isFavorite = (id) => favorites.includes(id);
 
   return (
-    <Container className={`mt-4 ${darkMode ? 'dark-mode' : ''}`}>
+    <Container className="mt-4">
       <div className="top-bar">
         <ToggleButton
           className="dark-mode-toggle"

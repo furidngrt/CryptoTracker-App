@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Card, Spinner, Pagination } from 'react-bootstrap';
+import { Container, Row, Col, Card, Spinner, Pagination, Form } from 'react-bootstrap';
 import axios from 'axios';
 import './Home.css';
 
@@ -8,6 +8,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     setLoading(true);
@@ -35,8 +36,24 @@ const Home = () => {
     setPage(pageNumber);
   };
 
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredCryptos = cryptos.filter(crypto =>
+    crypto.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <Container className="mt-4">
+      <Form.Group className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Search Crypto..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
+      </Form.Group>
       {loading ? (
         <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
@@ -44,7 +61,7 @@ const Home = () => {
       ) : (
         <>
           <Row xs={1} md={2} lg={3} className="g-4">
-            {cryptos.map((crypto) => (
+            {filteredCryptos.map((crypto) => (
               <Col key={crypto.id} className="mb-4">
                 <Card>
                   <Card.Img variant="top" src={crypto.image} alt={crypto.name} className="card-img-top" />

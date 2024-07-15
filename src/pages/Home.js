@@ -51,9 +51,9 @@ const Home = () => {
                   <Card.Body>
                     <Card.Title>{crypto.name}</Card.Title>
                     <Card.Text>
-                      Price: ${crypto.current_price}
+                      <span className="crypto-price">Price: ${crypto.current_price}</span>
                       <br />
-                      Market Cap: ${crypto.market_cap}
+                      <span className="crypto-market-cap">Market Cap: ${crypto.market_cap}</span>
                     </Card.Text>
                   </Card.Body>
                 </Card>

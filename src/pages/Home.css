@@ -99,23 +99,33 @@
   font-size: 1.2rem;
 }
 
+/* Dark Mode Styles */
 .dark-mode {
-  background-color: #121212;
-  color: #ffffff;
+  background-color: #1e1e1e;
+  color: #e0e0e0;
 }
 
 .dark-mode .card {
-  background: linear-gradient(145deg, #333333, #2a2a2a);
+  background: linear-gradient(145deg, #2b2b2b, #232323);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.dark-mode .card-title,
+.dark-mode .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode .card-title {
+  color: #e0e0e0;
+}
+
 .dark-mode .card-text {
-  color: #ffffff;
+  color: #cccccc;
 }
 
 .dark-mode .search-input {
   background-color: #333;
-  color: #fff;
+  color: #e0e0e0;
   border-color: #444;
 }
 
@@ -126,6 +136,22 @@
 
 .dark-mode .search-icon {
   color: #ced4da;
+}
+
+.dark-mode .crypto-price {
+  color: #4caf50;
+}
+
+.dark-mode .crypto-market-cap {
+  color: #2196f3;
+}
+
+.dark-mode .crypto-change.up {
+  color: #4caf50;
+}
+
+.dark-mode .crypto-change.down {
+  color: #f44336;
 }
 
 .top-bar {

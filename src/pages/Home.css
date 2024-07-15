@@ -57,8 +57,11 @@
 .crypto-change.down {
   color: #dc3545; /* Red for negative change */
 }
+
+/* Home.css */
 .search-container {
   margin-bottom: 20px;
+  text-align: center; /* Pusatkan input pencarian */
 }
 
 .search-input {
@@ -69,3 +72,15 @@
   border-radius: 4px;
   font-size: 1rem;
 }
+
+.search-input:focus {
+  border-color: #80bdff; /* Warna border saat input aktif */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Efek shadow saat input aktif */
+}
+
+@media (max-width: 576px) {
+  .search-input {
+    max-width: 100%; /* Lebar maksimum pada layar kecil */
+  }
+}
+

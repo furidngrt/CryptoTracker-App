@@ -79,9 +79,9 @@ const Home = () => {
         </Spinner>
       ) : (
         <>
-          <Row xs={2} md={3} lg={4} className="g-2"> {/* Adjust column size and spacing */}
+          <Row xs={1} md={2} lg={3} className="g-4">
             {filteredCryptos.map((crypto) => (
-              <Col key={crypto.id} className="mb-2"> {/* Reduced margin */}
+              <Col key={crypto.id} className="mb-4">
                 <Card>
                   <Card.Img variant="top" src={crypto.image} alt={crypto.name} className="card-img-top" />
                   <Card.Body>

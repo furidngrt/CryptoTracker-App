@@ -99,6 +99,11 @@
   font-size: 1.2rem;
 }
 
+.pagination {
+  justify-content: center;
+  margin-top: 20px;
+}
+
 /* Dark Mode Styles */
 .dark-mode {
   background-color: #1e1e1e;
@@ -121,6 +126,10 @@
 
 .dark-mode .card-text {
   color: #cccccc;
+}
+
+.dark-mode .search-container {
+  background-color: #1e1e1e;
 }
 
 .dark-mode .search-input {
@@ -152,6 +161,25 @@
 
 .dark-mode .crypto-change.down {
   color: #f44336;
+}
+
+.dark-mode .pagination {
+  background-color: #1e1e1e;
+}
+
+.dark-mode .pagination .page-item .page-link {
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #444;
+}
+
+.dark-mode .pagination .page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.dark-mode .pagination .page-item .page-link:hover {
+  background-color: #555;
 }
 
 .top-bar {

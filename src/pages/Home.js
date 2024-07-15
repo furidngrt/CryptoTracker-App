@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Card, Spinner, Pagination, Form } from 'react-bootstrap';
+import { Container, Row, Col, Card, Spinner, Pagination, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import './Home.css';
 
@@ -9,6 +9,7 @@ const Home = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
+  const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')) || []);
 
   const fetchData = () => {
     setLoading(true);
@@ -46,9 +47,20 @@ const Home = () => {
     setSearchTerm(event.target.value);
   };
 
+  const handleFavoriteToggle = (crypto) => {
+    const updatedFavorites = favorites.includes(crypto.id)
+      ? favorites.filter(fav => fav !== crypto.id)
+      : [...favorites, crypto.id];
+
+    setFavorites(updatedFavorites);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+  };
+
   const filteredCryptos = cryptos.filter(crypto =>
     crypto.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const isFavorite = (id) => favorites.includes(id);
 
   return (
     <Container className="mt-4">
@@ -83,6 +95,12 @@ const Home = () => {
                         24h Change: {crypto.price_change_percentage_24h.toFixed(2)}%
                       </span>
                     </Card.Text>
+                    <Button
+                      variant={isFavorite(crypto.id) ? 'danger' : 'primary'}
+                      onClick={() => handleFavoriteToggle(crypto)}
+                    >
+                      {isFavorite(crypto.id) ? 'Remove from Favorites' : 'Add to Favorites'}
+                    </Button>
                   </Card.Body>
                 </Card>
               </Col>

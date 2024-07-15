@@ -1,18 +1,18 @@
 import React from 'react';
-import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
       <Container>
-        <Navbar.Brand href="#home">CryptoTracker</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">CryptoTracker</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
+          <Nav className="ml-auto">
+            <Nav.Link as={Link} to="/" className="nav-link">Home</Nav.Link>
+            {/* Add more navigation links as needed */}
           </Nav>
-          <Button variant="outline-info">Login</Button>
         </Navbar.Collapse>
       </Container>
     </Navbar>

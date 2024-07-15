@@ -45,7 +45,7 @@ const Home = () => {
         <>
           <Row xs={1} md={2} lg={3} className="g-4">
             {cryptos.map((crypto) => (
-              <Col key={crypto.id}>
+              <Col key={crypto.id} className="mb-4">
                 <Card>
                   <Card.Img variant="top" src={crypto.image} alt={crypto.name} className="card-img-top" />
                   <Card.Body>

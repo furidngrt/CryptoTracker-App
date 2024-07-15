@@ -82,7 +82,7 @@ const Home = () => {
           <Row xs={1} md={2} lg={3} className="g-4">
             {filteredCryptos.map((crypto) => (
               <Col key={crypto.id} className="mb-4">
-                <Card className={crypto.price_change_percentage_24h >= 0 ? 'card-gainer' : 'card-loser'}>
+                <Card className={`card-${crypto.price_change_percentage_24h >= 0 ? 'gainer' : 'loser'}`}>
                   <Card.Img variant="top" src={crypto.image} alt={crypto.name} className="card-img-top" />
                   <Card.Body>
                     <Card.Title>{crypto.name}</Card.Title>

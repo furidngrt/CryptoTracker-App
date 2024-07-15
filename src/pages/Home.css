@@ -1,34 +1,28 @@
-.custom-row {
-  margin-top: 20px;
+.card-img-top {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin: 0 auto;
+  padding: 10px;
 }
 
-.custom-col {
-  margin-bottom: 20px;
-}
-
-.custom-card {
-  border: 1px solid #ccc;
+.card {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
 }
 
-.crypto-name {
-  font-size: 1.2rem;
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-title {
+  font-size: 1.25rem;
   font-weight: bold;
-  color: #333;
+  text-align: center;
 }
 
-.price {
-  font-weight: bold;
-  color: green;
-}
-
-.market-cap {
-  color: #777;
-}
-
-.pagination-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+.card-text {
+  text-align: center;
+  font-size: 1rem;
 }

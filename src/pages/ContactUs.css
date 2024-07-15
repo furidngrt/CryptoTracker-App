@@ -1,0 +1,41 @@
+/* ContactUs.css */
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #343a40;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.contact-info {
+  margin-top: 20px;
+  border-top: 1px solid #ced4da;
+  padding-top: 20px;
+}
+
+.contact-info p {
+  margin-bottom: 10px;
+}
+
+.email-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.email-link:hover {
+  text-decoration: underline;
+}

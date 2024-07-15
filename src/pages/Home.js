@@ -15,16 +15,14 @@ const Home = () => {
       params: {
         vs_currency: 'usd',
         order: 'market_cap_desc',
-        per_page: 15, // Number of items per page
+        per_page: 15,
         page: page,
         sparkline: false,
       },
     })
     .then(response => {
       setCryptos(response.data);
-      // Assuming there are around 7300 cryptocurrencies
-      const totalCryptos = 7300;
-      setTotalPages(Math.ceil(totalCryptos / 15)); // Calculate total pages
+      setTotalPages(Math.ceil(response.headers['x-total-count'] / 15)); // Calculate total pages
       setLoading(false);
     })
     .catch(error => {

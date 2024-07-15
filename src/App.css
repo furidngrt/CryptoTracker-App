@@ -1,0 +1,49 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  color: #343a40;
+}
+
+.App {
+  text-align: center;
+}
+
+.content {
+  padding: 20px;
+}
+
+.crypto-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #343a40;
+}
+
+.price {
+  font-weight: bold;
+  color: green;
+}
+
+.market-cap {
+  color: #6c757d;
+}
+
+.custom-row {
+  margin-top: 20px;
+}
+
+.custom-col {
+  margin-bottom: 20px;
+}
+
+.custom-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+  background-color: #343a40;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}

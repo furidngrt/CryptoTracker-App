@@ -10,7 +10,7 @@ const Home = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
 
-  useEffect(() => {
+  const fetchData = () => {
     setLoading(true);
     axios.get('https://api.coingecko.com/api/v3/coins/markets', {
       params: {
@@ -23,13 +23,19 @@ const Home = () => {
     })
     .then(response => {
       setCryptos(response.data);
-      setTotalPages(Math.ceil(120 / 15)); // Assume there are 100 items, adjust as needed
+      setTotalPages(Math.ceil(120 / 15)); // Assume there are 120 items, adjust as needed
       setLoading(false);
     })
     .catch(error => {
       console.error(error);
       setLoading(false);
     });
+  };
+
+  useEffect(() => {
+    fetchData();
+    const interval = setInterval(fetchData, 60000); // Update every 60 seconds
+    return () => clearInterval(interval);
   }, [page]);
 
   const handlePageChange = (pageNumber) => {

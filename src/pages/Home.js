@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Spinner, Pagination, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import './Home.css';
+import { RiCoinLine } from 'react-icons/ri'; // Import coin icon from React Icons
 
 const Home = () => {
   const [cryptos, setCryptos] = useState([]);
@@ -63,7 +64,7 @@ const Home = () => {
   const isFavorite = (id) => favorites.includes(id);
 
   return (
-    <Container className="mt-4">
+    <Container className={`mt-4 ${localStorage.getItem('darkMode') === 'true' ? 'dark-mode' : ''}`}>
       <div className="search-container">
         <Form.Control
           type="text"
@@ -72,6 +73,7 @@ const Home = () => {
           onChange={handleSearchChange}
           className="search-input"
         />
+        <RiCoinLine className="search-icon" /> {/* Coin icon in search bar */}
       </div>
       {loading ? (
         <Spinner animation="border" role="status">

@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Impor Bootstrap CSS di sini
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
+import ContactUs from './pages/ContactUs'; 
 import Footer from './components/Footer';
 
 function App() {

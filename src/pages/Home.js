@@ -54,6 +54,10 @@ const Home = () => {
                       <span className="crypto-price">Price: ${crypto.current_price}</span>
                       <br />
                       <span className="crypto-market-cap">Market Cap: ${crypto.market_cap}</span>
+                      <br />
+                      <span className={`crypto-change ${crypto.price_change_percentage_24h >= 0 ? 'up' : 'down'}`}>
+                        24h Change: {crypto.price_change_percentage_24h.toFixed(2)}%
+                      </span>
                     </Card.Text>
                   </Card.Body>
                 </Card>

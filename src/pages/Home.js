@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Card, Spinner, Pagination, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card, Spinner, Pagination, Form, Button, Dropdown, DropdownButton, Badge, ToggleButton } from 'react-bootstrap';
 import axios from 'axios';
 import './Home.css';
-import { RiCoinLine } from 'react-icons/ri'; // Import coin icon from React Icons
 
 const Home = () => {
   const [cryptos, setCryptos] = useState([]);
@@ -11,13 +10,29 @@ const Home = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
   const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')) || []);
+  const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem('darkMode')) || false);
+  const [sortOption, setSortOption] = useState('market_cap_desc');
+  const [topGainers, setTopGainers] = useState([]);
+  const [topLosers, setTopLosers] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+    fetchTopGainersAndLosers();
+    const interval = setInterval(fetchData, 60000); // Update every 60 seconds
+    return () => clearInterval(interval);
+  }, [page, sortOption]);
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', JSON.stringify(darkMode));
+    document.body.classList.toggle('dark-mode', darkMode);
+  }, [darkMode]);
 
   const fetchData = () => {
     setLoading(true);
     axios.get('https://api.coingecko.com/api/v3/coins/markets', {
       params: {
         vs_currency: 'usd',
-        order: 'market_cap_desc',
+        order: sortOption,
         per_page: 15,
         page: page,
         sparkline: false,
@@ -34,11 +49,37 @@ const Home = () => {
     });
   };
 
-  useEffect(() => {
-    fetchData();
-    const interval = setInterval(fetchData, 60000); // Update every 60 seconds
-    return () => clearInterval(interval);
-  }, [page]);
+  const fetchTopGainersAndLosers = () => {
+    axios.get('https://api.coingecko.com/api/v3/coins/markets', {
+      params: {
+        vs_currency: 'usd',
+        order: 'percent_change_24h_desc',
+        per_page: 5,
+        page: 1,
+      },
+    })
+    .then(response => {
+      setTopGainers(response.data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+
+    axios.get('https://api.coingecko.com/api/v3/coins/markets', {
+      params: {
+        vs_currency: 'usd',
+        order: 'percent_change_24h_asc',
+        per_page: 5,
+        page: 1,
+      },
+    })
+    .then(response => {
+      setTopLosers(response.data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  };
 
   const handlePageChange = (pageNumber) => {
     setPage(pageNumber);
@@ -57,6 +98,10 @@ const Home = () => {
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   };
 
+  const handleSortChange = (sortKey) => {
+    setSortOption(sortKey);
+  };
+
   const filteredCryptos = cryptos.filter(crypto =>
     crypto.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -64,7 +109,25 @@ const Home = () => {
   const isFavorite = (id) => favorites.includes(id);
 
   return (
-    <Container className={`mt-4 ${localStorage.getItem('darkMode') === 'true' ? 'dark-mode' : ''}`}>
+    <Container className="mt-4">
+      <div className="top-bar">
+        <ToggleButton
+          className="dark-mode-toggle"
+          id="toggle-check"
+          type="checkbox"
+          variant="secondary"
+          checked={darkMode}
+          value="1"
+          onChange={(e) => setDarkMode(e.currentTarget.checked)}
+        >
+          {darkMode ? 'Light Mode' : 'Dark Mode'}
+        </ToggleButton>
+        <DropdownButton id="dropdown-basic-button" title="Sort By" className="sort-dropdown">
+          <Dropdown.Item onClick={() => handleSortChange('market_cap_desc')}>Market Cap</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleSortChange('volume_desc')}>Volume</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleSortChange('percent_change_24h_desc')}>24h Change</Dropdown.Item>
+        </DropdownButton>
+      </div>
       <div className="search-container">
         <Form.Control
           type="text"
@@ -73,8 +136,43 @@ const Home = () => {
           onChange={handleSearchChange}
           className="search-input"
         />
-        <RiCoinLine className="search-icon" /> {/* Coin icon in search bar */}
       </div>
+      <Row className="mb-4">
+        <Col>
+          <h3>Top Gainers</h3>
+          <Row>
+            {topGainers.map((crypto) => (
+              <Col key={crypto.id}>
+                <Card>
+                  <Card.Body>
+                    <Card.Title>{crypto.name}</Card.Title>
+                    <Card.Text>
+                      <Badge bg="success">{crypto.price_change_percentage_24h.toFixed(2)}%</Badge>
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </Col>
+        <Col>
+          <h3>Top Losers</h3>
+          <Row>
+            {topLosers.map((crypto) => (
+              <Col key={crypto.id}>
+                <Card>
+                  <Card.Body>
+                    <Card.Title>{crypto.name}</Card.Title>
+                    <Card.Text>
+                      <Badge bg="danger">{crypto.price_change_percentage_24h.toFixed(2)}%</Badge>
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </Col>
+      </Row>
       {loading ? (
         <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
@@ -84,7 +182,7 @@ const Home = () => {
           <Row xs={1} md={2} lg={3} className="g-4">
             {filteredCryptos.map((crypto) => (
               <Col key={crypto.id} className="mb-4">
-                <Card className={`card-${crypto.price_change_percentage_24h >= 0 ? 'gainer' : 'loser'}`}>
+                <Card>
                   <Card.Img variant="top" src={crypto.image} alt={crypto.name} className="card-img-top" />
                   <Card.Body>
                     <Card.Title>{crypto.name}</Card.Title>

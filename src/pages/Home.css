@@ -1,6 +1,6 @@
 .card-img-top {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   margin: 0 auto;
   padding: 10px;
@@ -10,6 +10,8 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
+  width: 200px; /* Set a smaller width for the card */
+  margin: 0 auto; /* Center the card within the column */
 }
 
 .card:hover {
@@ -17,20 +19,20 @@
 }
 
 .card-title {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: bold;
   text-align: center;
 }
 
 .card-text {
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.85rem;
 }
 
 .crypto-price,
 .crypto-market-cap,
 .crypto-change {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
 }
 
 .crypto-price {

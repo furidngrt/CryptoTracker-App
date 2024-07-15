@@ -1,17 +1,18 @@
 .card-img-top {
-  width: 80px;
-  height: 80px;
+  width: 70px; /* Smaller image size */
+  height: 70px; /* Smaller image size */
   object-fit: contain;
   margin: 0 auto;
-  padding: 10px;
+  padding: 5px; /* Reduced padding */
 }
 
 .card {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
-  width: 200px; /* Set a smaller width for the card */
+  width: 180px; /* Smaller width */
   margin: 0 auto; /* Center the card within the column */
+  padding: 10px; /* Reduce padding inside the card */
 }
 
 .card:hover {
@@ -32,27 +33,27 @@
 .crypto-price,
 .crypto-market-cap,
 .crypto-change {
-  font-size: 0.75rem;
+  font-size: 0.75rem; /* Smaller font size */
 }
 
 .crypto-price {
   color: #28a745; /* Green color for price */
   font-weight: bold;
   display: block;
-  margin-top: 10px;
+  margin-top: 5px; /* Reduced margin */
 }
 
 .crypto-market-cap {
   color: #007bff; /* Blue color for market cap */
   font-weight: bold;
   display: block;
-  margin-top: 10px;
+  margin-top: 5px; /* Reduced margin */
 }
 
 .crypto-change {
   font-weight: bold;
   display: block;
-  margin-top: 10px;
+  margin-top: 5px; /* Reduced margin */
 }
 
 .crypto-change.up {

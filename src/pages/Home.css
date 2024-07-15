@@ -59,9 +59,11 @@
 }
 
 /* Home.css */
+
 .search-container {
+  position: relative;
   margin-bottom: 20px;
-  text-align: center; /* Pusatkan input pencarian */
+  text-align: center;
 }
 
 .search-input {
@@ -71,6 +73,7 @@
   border: 1px solid #ced4da;
   border-radius: 4px;
   font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s; /* Transisi saat input aktif */
 }
 
 .search-input:focus {
@@ -78,9 +81,17 @@
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Efek shadow saat input aktif */
 }
 
+.search-icon {
+  position: absolute;
+  right: 15px; /* Penyesuaian posisi ikon */
+  top: 50%; /* Pusatkan vertikal ikon */
+  transform: translateY(-50%);
+  color: #495057; /* Warna ikon pencarian */
+  cursor: pointer;
+}
+
 @media (max-width: 576px) {
   .search-input {
     max-width: 100%; /* Lebar maksimum pada layar kecil */
   }
 }
-

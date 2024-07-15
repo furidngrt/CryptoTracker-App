@@ -27,10 +27,15 @@
   font-size: 1rem;
 }
 
+.crypto-price,
+.crypto-market-cap,
+.crypto-change {
+  font-size: 0.85rem;
+}
+
 .crypto-price {
   color: #28a745; /* Green color for price */
   font-weight: bold;
-  font-size: 1.1rem;
   display: block;
   margin-top: 10px;
 }
@@ -38,14 +43,12 @@
 .crypto-market-cap {
   color: #007bff; /* Blue color for market cap */
   font-weight: bold;
-  font-size: 1.1rem;
   display: block;
   margin-top: 10px;
 }
 
 .crypto-change {
   font-weight: bold;
-  font-size: 1.1rem;
   display: block;
   margin-top: 10px;
 }
@@ -57,8 +60,6 @@
 .crypto-change.down {
   color: #dc3545; /* Red for negative change */
 }
-
-/* Home.css */
 
 .search-container {
   position: relative;

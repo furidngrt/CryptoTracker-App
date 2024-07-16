@@ -203,3 +203,20 @@
   }
 }
 
+/* Additional styles for top gainers and top losers */
+.top-mover-card {
+  width: 120px; /* Mengubah lebar kartu top gainers dan top losers */
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.top-mover-card:hover {
+  transform: scale(1.05);
+}
+
+.top-movers h3 {
+  font-size: 1.2rem; /* Mengurangi ukuran font header top gainers dan top losers */
+  margin-bottom: 10px;
+}

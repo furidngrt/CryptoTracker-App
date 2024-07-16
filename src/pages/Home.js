@@ -138,12 +138,12 @@ const Home = () => {
         />
       </div>
       <Row className="mb-4">
-        <Col xs={12} md={6}>
+        <Col>
           <h3>Top Gainers</h3>
           <Row>
             {topGainers.map((crypto) => (
-              <Col xs={6} md={4} lg={2} key={crypto.id} className="mb-2">
-                <Card className="top-mover-card">
+              <Col key={crypto.id}>
+                <Card>
                   <Card.Body>
                     <Card.Title>{crypto.name}</Card.Title>
                     <Card.Text>
@@ -155,12 +155,12 @@ const Home = () => {
             ))}
           </Row>
         </Col>
-        <Col xs={12} md={6}>
+        <Col>
           <h3>Top Losers</h3>
           <Row>
             {topLosers.map((crypto) => (
-              <Col xs={6} md={4} lg={2} key={crypto.id} className="mb-2">
-                <Card className="top-mover-card">
+              <Col key={crypto.id}>
+                <Card>
                   <Card.Body>
                     <Card.Title>{crypto.name}</Card.Title>
                     <Card.Text>

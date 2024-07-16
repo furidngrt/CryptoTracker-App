@@ -205,7 +205,7 @@
 
 /* Additional styles for top gainers and top losers */
 .top-mover-card {
-  width: 120px; /* Mengubah lebar kartu top gainers dan top losers */
+  width: 100px; /* Mengubah lebar kartu top gainers dan top losers */
   margin: 0 auto;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

@@ -1,27 +1,80 @@
 /* Header.css */
 .navbar {
-  padding: 1rem 0; /* Adjust padding as needed */
+  padding: 1rem 2rem; /* Tambahkan padding horizontal lebih besar */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan untuk dimensi */
+  transition: all 0.3s ease; /* Animasi halus saat scrolling */
 }
 
 .navbar-brand {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
+  color: #61dafb !important; /* Warna brand yang lebih menonjol, asumsi warna crypto */
+  transition: color 0.3s;
+}
+
+.navbar-brand:hover {
+  color: #ffffff !important; /* Efek hover pada brand */
 }
 
 .nav-link {
   font-size: 1.1rem;
-  margin-left: 1rem; /* Adjust spacing between links */
+  margin-left: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: #61dafb !important;
 }
 
 .search-container {
-  margin-bottom: 20px;
+  margin: 0 1rem;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
 }
 
 .search-input {
   width: 100%;
-  max-width: 400px;
-  padding: 10px;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
+  padding: 10px 40px 10px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px; /* Rounded search bar */
   font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #61dafb;
+  box-shadow: 0 0 8px rgba(97, 218, 251, 0.5);
+}
+
+.search-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .nav-link {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+  
+  .search-container {
+    margin: 1rem 0;
+  }
 }
